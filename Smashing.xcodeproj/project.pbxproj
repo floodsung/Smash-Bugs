@@ -18,13 +18,20 @@
 		440FD60C197CAD0D0017E92E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 440FD60A197CAD0D0017E92E /* Main_iPad.storyboard */; };
 		440FD60F197CAD0D0017E92E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD60E197CAD0D0017E92E /* ViewController.m */; };
 		440FD612197CAD0D0017E92E /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD611197CAD0D0017E92E /* MyScene.m */; };
-		440FD614197CAD0D0017E92E /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 440FD613197CAD0D0017E92E /* Spaceship.png */; };
 		440FD616197CAD0D0017E92E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 440FD615197CAD0D0017E92E /* Images.xcassets */; };
 		440FD61D197CAD0D0017E92E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440FD61C197CAD0D0017E92E /* XCTest.framework */; };
 		440FD61E197CAD0D0017E92E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440FD5F3197CAD0C0017E92E /* Foundation.framework */; };
 		440FD61F197CAD0D0017E92E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440FD5F7197CAD0C0017E92E /* UIKit.framework */; };
 		440FD627197CAD0D0017E92E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 440FD625197CAD0D0017E92E /* InfoPlist.strings */; };
 		440FD629197CAD0D0017E92E /* SmashingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD628197CAD0D0017E92E /* SmashingTests.m */; };
+		440FD634197CAE7D0017E92E /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 440FD633197CAE7D0017E92E /* ball.png */; };
+		440FD636197CAE820017E92E /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = 440FD635197CAE820017E92E /* bug.png */; };
+		440FD638197CAF220017E92E /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 440FD637197CAF220017E92E /* ground.png */; };
+		440FD63B197CBCCB0017E92E /* Bug.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD63A197CBCCB0017E92E /* Bug.m */; };
+		440FD63D197CCFEF0017E92E /* STAB1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 440FD63C197CCFEF0017E92E /* STAB1.WAV */; };
+		440FD645197CD3B60017E92E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440FD644197CD3B60017E92E /* QuartzCore.framework */; };
+		440FD64D197CF5F30017E92E /* edown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440FD64B197CF5F30017E92E /* edown.mp3 */; };
+		440FD64F197CFC880017E92E /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440FD64E197CFC880017E92E /* bgMusic.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +62,21 @@
 		440FD60E197CAD0D0017E92E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		440FD610197CAD0D0017E92E /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
 		440FD611197CAD0D0017E92E /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
-		440FD613197CAD0D0017E92E /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		440FD615197CAD0D0017E92E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		440FD61B197CAD0D0017E92E /* SmashingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmashingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		440FD61C197CAD0D0017E92E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		440FD624197CAD0D0017E92E /* SmashingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmashingTests-Info.plist"; sourceTree = "<group>"; };
 		440FD626197CAD0D0017E92E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		440FD628197CAD0D0017E92E /* SmashingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmashingTests.m; sourceTree = "<group>"; };
+		440FD633197CAE7D0017E92E /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		440FD635197CAE820017E92E /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug.png; sourceTree = "<group>"; };
+		440FD637197CAF220017E92E /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
+		440FD639197CBCCB0017E92E /* Bug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bug.h; sourceTree = "<group>"; };
+		440FD63A197CBCCB0017E92E /* Bug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bug.m; sourceTree = "<group>"; };
+		440FD63C197CCFEF0017E92E /* STAB1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = STAB1.WAV; sourceTree = "<group>"; };
+		440FD644197CD3B60017E92E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		440FD64B197CF5F30017E92E /* edown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = edown.mp3; sourceTree = "<group>"; };
+		440FD64E197CFC880017E92E /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440FD645197CD3B60017E92E /* QuartzCore.framework in Frameworks */,
 				440FD5F6197CAD0C0017E92E /* CoreGraphics.framework in Frameworks */,
 				440FD5F8197CAD0C0017E92E /* UIKit.framework in Frameworks */,
 				440FD5FA197CAD0D0017E92E /* SpriteKit.framework in Frameworks */,
@@ -92,6 +108,7 @@
 		440FD5E7197CAD0C0017E92E = {
 			isa = PBXGroup;
 			children = (
+				440FD632197CAE700017E92E /* Resource */,
 				440FD5FB197CAD0D0017E92E /* Smashing */,
 				440FD622197CAD0D0017E92E /* SmashingTests */,
 				440FD5F2197CAD0C0017E92E /* Frameworks */,
@@ -111,6 +128,7 @@
 		440FD5F2197CAD0C0017E92E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				440FD644197CD3B60017E92E /* QuartzCore.framework */,
 				440FD5F3197CAD0C0017E92E /* Foundation.framework */,
 				440FD5F5197CAD0C0017E92E /* CoreGraphics.framework */,
 				440FD5F7197CAD0C0017E92E /* UIKit.framework */,
@@ -131,7 +149,8 @@
 				440FD60E197CAD0D0017E92E /* ViewController.m */,
 				440FD610197CAD0D0017E92E /* MyScene.h */,
 				440FD611197CAD0D0017E92E /* MyScene.m */,
-				440FD613197CAD0D0017E92E /* Spaceship.png */,
+				440FD639197CBCCB0017E92E /* Bug.h */,
+				440FD63A197CBCCB0017E92E /* Bug.m */,
 				440FD615197CAD0D0017E92E /* Images.xcassets */,
 				440FD5FC197CAD0D0017E92E /* Supporting Files */,
 			);
@@ -165,6 +184,19 @@
 				440FD625197CAD0D0017E92E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		440FD632197CAE700017E92E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				440FD64B197CF5F30017E92E /* edown.mp3 */,
+				440FD63C197CCFEF0017E92E /* STAB1.WAV */,
+				440FD64E197CFC880017E92E /* bgMusic.mp3 */,
+				440FD633197CAE7D0017E92E /* ball.png */,
+				440FD635197CAE820017E92E /* bug.png */,
+				440FD637197CAF220017E92E /* ground.png */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,11 +275,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				440FD614197CAD0D0017E92E /* Spaceship.png in Resources */,
+				440FD63D197CCFEF0017E92E /* STAB1.WAV in Resources */,
 				440FD616197CAD0D0017E92E /* Images.xcassets in Resources */,
+				440FD64D197CF5F30017E92E /* edown.mp3 in Resources */,
+				440FD634197CAE7D0017E92E /* ball.png in Resources */,
 				440FD60C197CAD0D0017E92E /* Main_iPad.storyboard in Resources */,
+				440FD638197CAF220017E92E /* ground.png in Resources */,
 				440FD609197CAD0D0017E92E /* Main_iPhone.storyboard in Resources */,
+				440FD64F197CFC880017E92E /* bgMusic.mp3 in Resources */,
 				440FD600197CAD0D0017E92E /* InfoPlist.strings in Resources */,
+				440FD636197CAE820017E92E /* bug.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440FD63B197CBCCB0017E92E /* Bug.m in Sources */,
 				440FD612197CAD0D0017E92E /* MyScene.m in Sources */,
 				440FD60F197CAD0D0017E92E /* ViewController.m in Sources */,
 				440FD606197CAD0D0017E92E /* AppDelegate.m in Sources */,
@@ -490,6 +528,7 @@
 				440FD62E197CAD0D0017E92E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		440FD62F197CAD0D0017E92E /* Build configuration list for PBXNativeTarget "SmashingTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +537,7 @@
 				440FD631197CAD0D0017E92E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
