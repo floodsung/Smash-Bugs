@@ -21,6 +21,10 @@
     SKLabelNode *scoreLabel;
     SKLabelNode *ballLabel;
     SKLabelNode *gameOverLabel;
+    SKLabelNode *scoreBoardScoreLabel;
+    SKLabelNode *scoreBoardHighestScoreLabel;
+    
+    
     SKAction *stabSound;
     SKAction *clangSound;
 }
@@ -46,6 +50,8 @@
 {
     NSLog(@"restart");
     gameOverLabel.hidden = YES;
+    scoreBoardHighestScoreLabel.hidden = YES;
+    scoreBoardScoreLabel.hidden = YES;
     
     [self enumerateChildNodesWithName:@"ball" usingBlock:^(SKNode *node, BOOL *stop) {
         [node removeFromParent];
@@ -74,13 +80,37 @@
     clangSound = [SKAction playSoundFileNamed:@"edown.mp3" waitForCompletion:NO];
     
     gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Thin"];
-    gameOverLabel.text = @"GameOver";
+    gameOverLabel.text = @"Game Over";
+    gameOverLabel.fontSize = 30;
     gameOverLabel.zPosition = 2;
     gameOverLabel.fontColor = [SKColor blackColor];
-    gameOverLabel.position = CGPointMake(self.size.width / 2 , self.size.height / 2 + 20);
+    gameOverLabel.position = CGPointMake(self.size.width / 2 , self.size.height / 2 + 90);
     
     [self addChild:gameOverLabel];
     gameOverLabel.hidden = YES;
+    
+    
+    scoreBoardScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Marker Felt"];
+    scoreBoardScoreLabel.text = [NSString stringWithFormat:@"Score: %d",score];
+    scoreBoardScoreLabel.position = CGPointMake(self.size.width/2, self.size.height/2 + 30);
+    scoreBoardScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+    
+    scoreBoardScoreLabel.fontSize = 20;
+    scoreBoardScoreLabel.zPosition = 2;
+    scoreBoardScoreLabel.fontColor = [SKColor blackColor];
+    [self addChild:scoreBoardScoreLabel];
+    scoreBoardScoreLabel.hidden = YES;
+    
+    scoreBoardHighestScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Marker Felt"];
+    scoreBoardHighestScoreLabel.text = [NSString stringWithFormat:@"Highest Score: %d",score];
+    scoreBoardHighestScoreLabel.position = CGPointMake(self.size.width/2, self.size.height/2 + 60);
+    scoreBoardHighestScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+    
+    scoreBoardHighestScoreLabel.fontSize = 20;
+    scoreBoardHighestScoreLabel.zPosition = 2;
+    scoreBoardHighestScoreLabel.fontColor = [SKColor blackColor];
+    [self addChild:scoreBoardHighestScoreLabel];
+    scoreBoardHighestScoreLabel.hidden = YES;
 }
 
 -(void)touchesBegan:(NSSet *)touches
@@ -108,12 +138,22 @@
             ball.physicsBody.collisionBitMask = CNPhysicsCategoryGround | CNPhysicsCategoryBug | CNPhysicsCategoryBall;
             ball.physicsBody.contactTestBitMask = CNPhysicsCategoryBug | CNPhysicsCategoryGround;
             
-            SKAction *wait = [SKAction waitForDuration:5];
+            SKAction *wait = [SKAction waitForDuration:3.5];
             SKAction *fade = [SKAction fadeOutWithDuration:0.5];
-            
+            SKAction *check = [SKAction runBlock:^{
+                if (ballCount == 0) {
+                    [self lose];
+                }
+            }];
             SKAction *remove = [SKAction removeFromParent];
             
-            [ball runAction:[SKAction sequence:@[wait,fade,remove]]];
+            if (ballCount == 0) {
+                [ball runAction:[SKAction sequence:@[wait,fade,check,remove]]];
+            } else {
+                [ball runAction:[SKAction sequence:@[wait,fade,remove]]];
+            }
+            
+            
             
             [self runAction:stabSound];
             
@@ -134,9 +174,41 @@
 - (void)lose
 {
     NSLog(@"You lose!");
-    gameOverLabel.hidden = NO;
-    isLose = YES;
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gameOverNotification" object:nil];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *highestScore = [defaults objectForKey:@"HighestScore"];
+    
+    if (score > highestScore.intValue) {
+        NSLog(@"New High Score!");
+        [defaults setObject:[NSNumber numberWithInt:score] forKey:@"HighestScore"];
+        
+        SKLabelNode *newHighScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Thin"];
+        newHighScoreLabel.position = CGPointMake(self.size.width/2, self.size.height - 100);
+        newHighScoreLabel.fontSize = 20;
+        newHighScoreLabel.fontColor = [SKColor blackColor];
+        newHighScoreLabel.text = [NSString stringWithFormat:@"New High Score:%d",score];
+        newHighScoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+        
+        [newHighScoreLabel runAction:[SKAction sequence:@[
+                                                          [SKAction scaleTo:1.5 duration:0.5],[SKAction fadeOutWithDuration:0.5],[SKAction removeFromParent]]]
+         completion:^{
+             gameOverLabel.hidden = NO;
+             isLose = YES;
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"gameOverNotification" object:nil];
+         }];
+        [self addChild:newHighScoreLabel];
+    } else {
+        gameOverLabel.hidden = NO;
+        isLose = YES;
+        scoreBoardHighestScoreLabel.text = [NSString stringWithFormat:@"Highest Score: %d",highestScore.intValue];
+        scoreBoardScoreLabel.text = [NSString stringWithFormat:@"Score: %d",score];
+        scoreBoardScoreLabel.hidden = NO;
+        scoreBoardHighestScoreLabel.hidden = NO;
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"gameOverNotification" object:nil];
+    }
+    
+    
 }
 
 - (void)addLabels
@@ -248,7 +320,7 @@
         if (!bug.isDead) {
             score++;
             continueSmashCount++;
-            ballCount += continueSmashCount;
+            ballCount += (int)continueSmashCount/2 ;
             bug.isDead = YES;
             
         }

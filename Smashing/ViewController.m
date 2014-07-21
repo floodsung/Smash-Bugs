@@ -17,12 +17,14 @@
     UIButton *continueButton;
     UIButton *startButton;
     UILabel *gameOverLabel;
+    BOOL isGameOver;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    isGameOver = NO;
     // Configure the view.
     SKView * skView = (SKView *)self.view;
     //skView.showsFPS = YES;
@@ -61,11 +63,16 @@
     restartButton = [[UIButton alloc]init];
     [restartButton setBounds:CGRectMake(0,0,200,30)];
     [restartButton setCenter:self.view.center];
-    [restartButton setTitle:@"重新开始" forState:UIControlStateNormal];
+    [restartButton setTitle:@"Restart" forState:UIControlStateNormal];
+    restartButton.titleLabel.font = [UIFont fontWithName:@"Marker Felt" size:20];
+    
     [restartButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [restartButton setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
     [restartButton.layer setBorderWidth:2.0];
     [restartButton.layer setCornerRadius:15.0];
     [restartButton.layer setBorderColor:[[UIColor grayColor] CGColor]];
+    [restartButton.layer setBackgroundColor:[UIColor whiteColor].CGColor];
+    [restartButton.layer setOpaque:YES];
     [restartButton addTarget:self action:@selector(restart:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:restartButton];
     
@@ -77,11 +84,15 @@
 {
     continueButton = [[UIButton alloc]init];
     [continueButton setFrame:CGRectMake(CGRectGetWidth(self.view.frame) / 2 - 100,self.view.frame.size.height/2 - 60,200,30)];
-    [continueButton setTitle:@"继续" forState:UIControlStateNormal];
+    [continueButton setTitle:@"Continue" forState:UIControlStateNormal];
+    continueButton.titleLabel.font = [UIFont fontWithName:@"Marker Felt" size:20];
+    
     [continueButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [continueButton setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
     [continueButton.layer setBorderWidth:2.0];
     [continueButton.layer setCornerRadius:15.0];
     [continueButton.layer setBorderColor:[[UIColor grayColor] CGColor]];
+    [continueButton.layer setBackgroundColor:[UIColor whiteColor].CGColor];
     [continueButton addTarget:self action:@selector(continueGame:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:continueButton];
     
@@ -91,22 +102,28 @@
 
 - (void)gameOver{
     NSLog(@"game over");
+    ((SKView *)self.view).paused = YES;
+    isGameOver = YES;
     restartButton.hidden = NO;
 }
 
 - (void)pause{
-    
     ((SKView *)self.view).paused = YES;
-    
-    restartButton.hidden = NO;
-    continueButton.hidden = NO;
-    //startButton.hidden = YES;
+
+    if (!isGameOver) {
+        
+        restartButton.hidden = NO;
+        continueButton.hidden = NO;
+        //startButton.hidden = YES;
+
+    }
     
     
 }
 
 - (void)restart:(UIButton *)button{
     
+    isGameOver = NO;
     ((SKView *)self.view).paused = NO;
     restartButton.hidden = YES;
     continueButton.hidden = YES;
@@ -116,6 +133,7 @@
 
 - (void)continueGame:(UIButton *)button{
     
+    isGameOver = NO;
     continueButton.hidden = YES;
     restartButton.hidden = YES;
     ((SKView *)self.view).paused = NO;
