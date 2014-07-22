@@ -25,6 +25,7 @@
     
     UILabel *gameOverLabel;
     BOOL isGameOver;
+    SKView *gameView;
 }
 
 - (void)viewDidLoad
@@ -33,21 +34,16 @@
 
     isGameOver = NO;
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
-    //skView.showsFPS = YES;
-    //skView.showsNodeCount = YES;
+    gameView = [[SKView alloc] initWithFrame:self.view.frame];
     
-    // Create and configure the scene.
-    //SKScene * scene = [MyScene sceneWithSize:CGSizeMake(320, 420)];
-    SKScene * scene = [MyScene sceneWithSize:skView.frame.size];
+    SKScene * scene = [MyScene sceneWithSize:gameView.frame.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
-    [skView presentScene:scene];
+    [gameView presentScene:scene];
     
-    //skView.paused = YES;
+    [self.view addSubview:gameView];
     
-    //[self addStartButton];
     [self addRestartButton];
     [self addContinueButton];
     [self addGameOverLabel];
@@ -64,6 +60,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAuthenticationViewController) name:PresentAuthenticationViewController object:nil];
     
     [[GameKitHelper sharedGameKitHelper] authenticateLocalPlayer];
+    
+    // iAd
+    self.canDisplayBannerAds = YES;
 }
 
 - (void)dealloc
@@ -144,7 +143,7 @@
 
 - (void)gameOver{
     NSLog(@"game over");
-    ((SKView *)self.view).paused = YES;
+    gameView.paused = YES;
     isGameOver = YES;
     restartButton.hidden = NO;
     actionButton.hidden = NO;
@@ -153,18 +152,15 @@
 }
 
 - (void)pause{
-    ((SKView *)self.view).paused = YES;
+    
+    gameView.paused = YES;
 
     if (!isGameOver) {
-        
         restartButton.hidden = NO;
         continueButton.hidden = NO;
         actionButton.hidden = YES;
         rateButton.hidden = YES;
         gameCenterButton.hidden = NO;
-
-        
-        //startButton.hidden = YES;
 
     }
     
@@ -174,32 +170,33 @@
 - (void)restart:(UIButton *)button{
     
     isGameOver = NO;
-    ((SKView *)self.view).paused = NO;
+    gameView.paused = NO;
+    
     actionButton.hidden = YES;
     rateButton.hidden = YES;
     restartButton.hidden = YES;
     continueButton.hidden = YES;
     gameCenterButton.hidden = YES;
 
-    //startButton.hidden = YES;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"restartNotification" object:nil];
 }
 
 - (void)continueGame:(UIButton *)button{
     
     isGameOver = NO;
+    gameView.paused = NO;
+
     actionButton.hidden = YES;
     rateButton.hidden = YES;
     continueButton.hidden = YES;
     restartButton.hidden = YES;
     gameCenterButton.hidden = YES;
 
-    ((SKView *)self.view).paused = NO;
 }
 
 - (BOOL)shouldAutorotate
 {
-    return YES;
+    return NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -257,8 +254,9 @@
 
 - (void)rate
 {
-    NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=901397384"
-    ;
+    //self.canDisplayBannerAds = NO;
+    NSLog(@"rate");
+    NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=901397384";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 

@@ -14,8 +14,6 @@
 		440FD600197CAD0D0017E92E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 440FD5FE197CAD0D0017E92E /* InfoPlist.strings */; };
 		440FD602197CAD0D0017E92E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD601197CAD0D0017E92E /* main.m */; };
 		440FD606197CAD0D0017E92E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD605197CAD0D0017E92E /* AppDelegate.m */; };
-		440FD609197CAD0D0017E92E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 440FD607197CAD0D0017E92E /* Main_iPhone.storyboard */; };
-		440FD60C197CAD0D0017E92E /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 440FD60A197CAD0D0017E92E /* Main_iPad.storyboard */; };
 		440FD60F197CAD0D0017E92E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD60E197CAD0D0017E92E /* ViewController.m */; };
 		440FD612197CAD0D0017E92E /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD611197CAD0D0017E92E /* MyScene.m */; };
 		440FD616197CAD0D0017E92E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 440FD615197CAD0D0017E92E /* Images.xcassets */; };
@@ -39,6 +37,8 @@
 		440FD671197E12520017E92E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440FD670197E12520017E92E /* GameKit.framework */; };
 		440FD682197E15D60017E92E /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD681197E15D60017E92E /* GameKitHelper.m */; };
 		440FD685197E1CC40017E92E /* AchievementsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD684197E1CC40017E92E /* AchievementsHelper.m */; };
+		440FD687197E3BD50017E92E /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440FD686197E3BD50017E92E /* iAd.framework */; };
+		440FD68B197E44510017E92E /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 440FD689197E44510017E92E /* Main_iPhone.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +62,6 @@
 		440FD603197CAD0D0017E92E /* Smashing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smashing-Prefix.pch"; sourceTree = "<group>"; };
 		440FD604197CAD0D0017E92E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		440FD605197CAD0D0017E92E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		440FD608197CAD0D0017E92E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		440FD60B197CAD0D0017E92E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		440FD60D197CAD0D0017E92E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		440FD60E197CAD0D0017E92E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		440FD610197CAD0D0017E92E /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
@@ -93,6 +91,8 @@
 		440FD681197E15D60017E92E /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
 		440FD683197E1CC40017E92E /* AchievementsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsHelper.h; sourceTree = "<group>"; };
 		440FD684197E1CC40017E92E /* AchievementsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsHelper.m; sourceTree = "<group>"; };
+		440FD686197E3BD50017E92E /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		440FD68A197E44510017E92E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440FD687197E3BD50017E92E /* iAd.framework in Frameworks */,
 				440FD645197CD3B60017E92E /* QuartzCore.framework in Frameworks */,
 				440FD5F6197CAD0C0017E92E /* CoreGraphics.framework in Frameworks */,
 				440FD5F8197CAD0C0017E92E /* UIKit.framework in Frameworks */,
@@ -145,6 +146,7 @@
 		440FD5F2197CAD0C0017E92E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				440FD686197E3BD50017E92E /* iAd.framework */,
 				440FD670197E12520017E92E /* GameKit.framework */,
 				440FD644197CD3B60017E92E /* QuartzCore.framework */,
 				440FD5F3197CAD0C0017E92E /* Foundation.framework */,
@@ -162,10 +164,9 @@
 				440FD67F197E15B30017E92E /* GameKit */,
 				440FD604197CAD0D0017E92E /* AppDelegate.h */,
 				440FD605197CAD0D0017E92E /* AppDelegate.m */,
-				440FD607197CAD0D0017E92E /* Main_iPhone.storyboard */,
-				440FD60A197CAD0D0017E92E /* Main_iPad.storyboard */,
 				440FD60D197CAD0D0017E92E /* ViewController.h */,
 				440FD60E197CAD0D0017E92E /* ViewController.m */,
+				440FD689197E44510017E92E /* Main_iPhone.storyboard */,
 				440FD610197CAD0D0017E92E /* MyScene.h */,
 				440FD611197CAD0D0017E92E /* MyScene.m */,
 				440FD639197CBCCB0017E92E /* Bug.h */,
@@ -321,9 +322,8 @@
 				440FD667197E085E0017E92E /* Lose.mp3 in Resources */,
 				440FD65F197E03870017E92E /* DRIP.WAV in Resources */,
 				440FD634197CAE7D0017E92E /* ball.png in Resources */,
-				440FD60C197CAD0D0017E92E /* Main_iPad.storyboard in Resources */,
+				440FD68B197E44510017E92E /* Main_iPhone.storyboard in Resources */,
 				440FD638197CAF220017E92E /* ground.png in Resources */,
-				440FD609197CAD0D0017E92E /* Main_iPhone.storyboard in Resources */,
 				440FD665197E051D0017E92E /* 606chat.wav in Resources */,
 				440FD600197CAD0D0017E92E /* InfoPlist.strings in Resources */,
 				440FD663197E04B20017E92E /* snare02.wav in Resources */,
@@ -386,28 +386,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		440FD607197CAD0D0017E92E /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				440FD608197CAD0D0017E92E /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		440FD60A197CAD0D0017E92E /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				440FD60B197CAD0D0017E92E /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		440FD625197CAD0D0017E92E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				440FD626197CAD0D0017E92E /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		440FD689197E44510017E92E /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				440FD68A197E44510017E92E /* Base */,
+			);
+			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
