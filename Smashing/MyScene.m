@@ -8,6 +8,8 @@
 
 #import "MyScene.h"
 #import "Bug.h"
+#import "AchievementsHelper.h"
+#import "GameKitHelper.h"
 
 
 @implementation MyScene
@@ -27,6 +29,8 @@
     
     SKAction *stabSound;
     SKAction *clangSound;
+    SKAction *hitGroundSound;
+    SKAction *gameOverSound;
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -38,7 +42,7 @@
         [self addLabels];
         [self spawnBugs];
         
-        //[self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"bgMusic.mp3" waitForCompletion:YES]]];
+        //[self runAction:[SKAction repeatActionForever:[SKAction playSoundFileNamed:@"MCLIP07.WAV" waitForCompletion:YES]]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(restart) name:@"restartNotification" object:nil];
        
@@ -76,8 +80,10 @@
     self.physicsWorld.contactDelegate = self;
     self.physicsWorld.gravity = CGVectorMake(0, -5);
     
-    stabSound = [SKAction playSoundFileNamed:@"STAB1.WAV" waitForCompletion:NO];
-    clangSound = [SKAction playSoundFileNamed:@"edown.mp3" waitForCompletion:NO];
+    stabSound = [SKAction playSoundFileNamed:@"DRIP.WAV" waitForCompletion:NO];
+    clangSound = [SKAction playSoundFileNamed:@"snare02.wav" waitForCompletion:NO];
+    hitGroundSound = [SKAction playSoundFileNamed:@"606chat.wav" waitForCompletion:NO];
+    gameOverSound = [SKAction playSoundFileNamed:@"CRYSTAL5.WAV" waitForCompletion:NO];
     
     gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Thin"];
     gameOverLabel.text = @"Game Over";
@@ -130,7 +136,7 @@
             SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
             ball.name = @"ball";
             ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:15];
-            ball.physicsBody.restitution = 0.65;
+            ball.physicsBody.restitution = 0.8;
             ball.physicsBody.friction = 0.1;
             ball.physicsBody.density = 2;
             ball.position = CGPointMake(location.x, self.size.height - 30);
@@ -175,11 +181,13 @@
 {
     NSLog(@"You lose!");
     
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSNumber *highestScore = [defaults objectForKey:@"HighestScore"];
     
     if (score > highestScore.intValue) {
         NSLog(@"New High Score!");
+        [self runAction:gameOverSound];
         [defaults setObject:[NSNumber numberWithInt:score] forKey:@"HighestScore"];
         
         SKLabelNode *newHighScoreLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Thin"];
@@ -194,18 +202,27 @@
          completion:^{
              gameOverLabel.hidden = NO;
              isLose = YES;
+             scoreBoardHighestScoreLabel.text = [NSString stringWithFormat:@"Highest Score: %d",score];
+             scoreBoardScoreLabel.text = [NSString stringWithFormat:@"Score: %d",score];
+             scoreBoardScoreLabel.hidden = NO;
+             scoreBoardHighestScoreLabel.hidden = NO;
+             [self reportScoreToGameCenter];
              [[NSNotificationCenter defaultCenter] postNotificationName:@"gameOverNotification" object:nil];
          }];
         [self addChild:newHighScoreLabel];
     } else {
         gameOverLabel.hidden = NO;
         isLose = YES;
+        [self reportScoreToGameCenter];
         scoreBoardHighestScoreLabel.text = [NSString stringWithFormat:@"Highest Score: %d",highestScore.intValue];
         scoreBoardScoreLabel.text = [NSString stringWithFormat:@"Score: %d",score];
         scoreBoardScoreLabel.hidden = NO;
         scoreBoardHighestScoreLabel.hidden = NO;
 
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"gameOverNotification" object:nil];
+        [self runAction:gameOverSound completion:^{
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"gameOverNotification" object:nil];
+        }];
+       
     }
     
     
@@ -267,7 +284,7 @@
         
         Bug *bug = [[Bug alloc] initWithImageNamed:@"bug"];
         bug.position = CGPointMake(-20,ScalarRandomRange(self.size.height/6, self.size.height/4*3) );
-        bug.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(bug.size.width - 5, bug.size.height - 5)];
+        bug.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:15];
         bug.physicsBody.dynamic = false;
         bug.physicsBody.categoryBitMask = CNPhysicsCategoryBug;
         bug.physicsBody.contactTestBitMask = CNPhysicsCategoryBall;
@@ -276,18 +293,7 @@
         
         
         SKAction *move = [SKAction moveByX:self.size.width+30 y:0 duration:ScalarRandomRange(2.5 - speed, 4.5 - speed)];
-        /*
-        SKAction *check = [SKAction runBlock:^{
-            if (!bug.isDead && !isLose) {
-                if (ballCount > 0) {
-                    ballCount--;
-                }else {
-                    [self lose];
-                }
-                
-            }
-        }];
-         */
+
         SKAction *remove = [SKAction removeFromParent];
         
         [bug runAction:[SKAction sequence:@[move,remove]]];
@@ -319,6 +325,7 @@
         bug.physicsBody.dynamic = YES;
         if (!bug.isDead) {
             score++;
+            [self reportAchievements];
             continueSmashCount++;
             ballCount += (int)continueSmashCount/2 ;
             bug.isDead = YES;
@@ -326,8 +333,25 @@
         }
     } else if (collision == (CNPhysicsCategoryBall | CNPhysicsCategoryGround))
     {
+        [self runAction:hitGroundSound];
         continueSmashCount = 0;
     }
+}
+
+#pragma mark - Game kit
+
+- (void)reportAchievements
+{
+    NSLog(@"report achievements");
+    NSMutableArray *achievements = [NSMutableArray arrayWithObjects:[AchievementsHelper reach10Achievement:score],[AchievementsHelper reach30Achievement:score],[AchievementsHelper reach50Achievement:score],[AchievementsHelper reach100Achievement:score],[AchievementsHelper reach500Achievement:score], nil];
+    
+    [[GameKitHelper sharedGameKitHelper] reportAchievements:achievements];
+}
+
+- (void)reportScoreToGameCenter
+{
+    [[GameKitHelper sharedGameKitHelper] reportScore:score forLeaderboardID:@"HighestScore"];
+    
 }
 
 @end

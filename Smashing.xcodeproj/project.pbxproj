@@ -28,10 +28,17 @@
 		440FD636197CAE820017E92E /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = 440FD635197CAE820017E92E /* bug.png */; };
 		440FD638197CAF220017E92E /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = 440FD637197CAF220017E92E /* ground.png */; };
 		440FD63B197CBCCB0017E92E /* Bug.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD63A197CBCCB0017E92E /* Bug.m */; };
-		440FD63D197CCFEF0017E92E /* STAB1.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 440FD63C197CCFEF0017E92E /* STAB1.WAV */; };
 		440FD645197CD3B60017E92E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440FD644197CD3B60017E92E /* QuartzCore.framework */; };
-		440FD64D197CF5F30017E92E /* edown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440FD64B197CF5F30017E92E /* edown.mp3 */; };
-		440FD64F197CFC880017E92E /* bgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440FD64E197CFC880017E92E /* bgMusic.mp3 */; };
+		440FD65F197E03870017E92E /* DRIP.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 440FD65E197E03870017E92E /* DRIP.WAV */; };
+		440FD663197E04B20017E92E /* snare02.wav in Resources */ = {isa = PBXBuildFile; fileRef = 440FD662197E04B20017E92E /* snare02.wav */; };
+		440FD665197E051D0017E92E /* 606chat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 440FD664197E051D0017E92E /* 606chat.wav */; };
+		440FD667197E085E0017E92E /* Lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 440FD666197E085E0017E92E /* Lose.mp3 */; };
+		440FD669197E0A280017E92E /* CRYSTAL5.WAV in Resources */ = {isa = PBXBuildFile; fileRef = 440FD668197E0A280017E92E /* CRYSTAL5.WAV */; };
+		440FD66D197E0BC80017E92E /* action.png in Resources */ = {isa = PBXBuildFile; fileRef = 440FD66B197E0BC80017E92E /* action.png */; };
+		440FD66F197E0F420017E92E /* rate.png in Resources */ = {isa = PBXBuildFile; fileRef = 440FD66E197E0F420017E92E /* rate.png */; };
+		440FD671197E12520017E92E /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440FD670197E12520017E92E /* GameKit.framework */; };
+		440FD682197E15D60017E92E /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD681197E15D60017E92E /* GameKitHelper.m */; };
+		440FD685197E1CC40017E92E /* AchievementsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 440FD684197E1CC40017E92E /* AchievementsHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +57,6 @@
 		440FD5F5197CAD0C0017E92E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		440FD5F7197CAD0C0017E92E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		440FD5F9197CAD0D0017E92E /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		440FD5FD197CAD0D0017E92E /* Smashing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Smashing-Info.plist"; sourceTree = "<group>"; };
 		440FD5FF197CAD0D0017E92E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		440FD601197CAD0D0017E92E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		440FD603197CAD0D0017E92E /* Smashing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smashing-Prefix.pch"; sourceTree = "<group>"; };
@@ -73,10 +79,20 @@
 		440FD637197CAF220017E92E /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 		440FD639197CBCCB0017E92E /* Bug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bug.h; sourceTree = "<group>"; };
 		440FD63A197CBCCB0017E92E /* Bug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bug.m; sourceTree = "<group>"; };
-		440FD63C197CCFEF0017E92E /* STAB1.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = STAB1.WAV; sourceTree = "<group>"; };
 		440FD644197CD3B60017E92E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		440FD64B197CF5F30017E92E /* edown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = edown.mp3; sourceTree = "<group>"; };
-		440FD64E197CFC880017E92E /* bgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgMusic.mp3; sourceTree = "<group>"; };
+		440FD65E197E03870017E92E /* DRIP.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DRIP.WAV; sourceTree = "<group>"; };
+		440FD662197E04B20017E92E /* snare02.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare02.wav; sourceTree = "<group>"; };
+		440FD664197E051D0017E92E /* 606chat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 606chat.wav; sourceTree = "<group>"; };
+		440FD666197E085E0017E92E /* Lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Lose.mp3; sourceTree = "<group>"; };
+		440FD668197E0A280017E92E /* CRYSTAL5.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CRYSTAL5.WAV; sourceTree = "<group>"; };
+		440FD66B197E0BC80017E92E /* action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action.png; sourceTree = "<group>"; };
+		440FD66E197E0F420017E92E /* rate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rate.png; sourceTree = "<group>"; };
+		440FD670197E12520017E92E /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		440FD67D197E14CC0017E92E /* Smashing-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Smashing-Info.plist"; sourceTree = "<group>"; };
+		440FD680197E15D60017E92E /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
+		440FD681197E15D60017E92E /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
+		440FD683197E1CC40017E92E /* AchievementsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsHelper.h; sourceTree = "<group>"; };
+		440FD684197E1CC40017E92E /* AchievementsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +103,7 @@
 				440FD645197CD3B60017E92E /* QuartzCore.framework in Frameworks */,
 				440FD5F6197CAD0C0017E92E /* CoreGraphics.framework in Frameworks */,
 				440FD5F8197CAD0C0017E92E /* UIKit.framework in Frameworks */,
+				440FD671197E12520017E92E /* GameKit.framework in Frameworks */,
 				440FD5FA197CAD0D0017E92E /* SpriteKit.framework in Frameworks */,
 				440FD5F4197CAD0C0017E92E /* Foundation.framework in Frameworks */,
 			);
@@ -128,6 +145,7 @@
 		440FD5F2197CAD0C0017E92E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				440FD670197E12520017E92E /* GameKit.framework */,
 				440FD644197CD3B60017E92E /* QuartzCore.framework */,
 				440FD5F3197CAD0C0017E92E /* Foundation.framework */,
 				440FD5F5197CAD0C0017E92E /* CoreGraphics.framework */,
@@ -141,6 +159,7 @@
 		440FD5FB197CAD0D0017E92E /* Smashing */ = {
 			isa = PBXGroup;
 			children = (
+				440FD67F197E15B30017E92E /* GameKit */,
 				440FD604197CAD0D0017E92E /* AppDelegate.h */,
 				440FD605197CAD0D0017E92E /* AppDelegate.m */,
 				440FD607197CAD0D0017E92E /* Main_iPhone.storyboard */,
@@ -160,8 +179,8 @@
 		440FD5FC197CAD0D0017E92E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				440FD5FD197CAD0D0017E92E /* Smashing-Info.plist */,
 				440FD5FE197CAD0D0017E92E /* InfoPlist.strings */,
+				440FD67D197E14CC0017E92E /* Smashing-Info.plist */,
 				440FD601197CAD0D0017E92E /* main.m */,
 				440FD603197CAD0D0017E92E /* Smashing-Prefix.pch */,
 			);
@@ -189,14 +208,29 @@
 		440FD632197CAE700017E92E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				440FD64B197CF5F30017E92E /* edown.mp3 */,
-				440FD63C197CCFEF0017E92E /* STAB1.WAV */,
-				440FD64E197CFC880017E92E /* bgMusic.mp3 */,
+				440FD66B197E0BC80017E92E /* action.png */,
+				440FD65E197E03870017E92E /* DRIP.WAV */,
+				440FD662197E04B20017E92E /* snare02.wav */,
+				440FD66E197E0F420017E92E /* rate.png */,
+				440FD664197E051D0017E92E /* 606chat.wav */,
+				440FD666197E085E0017E92E /* Lose.mp3 */,
 				440FD633197CAE7D0017E92E /* ball.png */,
 				440FD635197CAE820017E92E /* bug.png */,
+				440FD668197E0A280017E92E /* CRYSTAL5.WAV */,
 				440FD637197CAF220017E92E /* ground.png */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		440FD67F197E15B30017E92E /* GameKit */ = {
+			isa = PBXGroup;
+			children = (
+				440FD680197E15D60017E92E /* GameKitHelper.h */,
+				440FD681197E15D60017E92E /* GameKitHelper.m */,
+				440FD683197E1CC40017E92E /* AchievementsHelper.h */,
+				440FD684197E1CC40017E92E /* AchievementsHelper.m */,
+			);
+			name = GameKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +280,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = FloodSurge;
 				TargetAttributes = {
+					440FD5EF197CAD0C0017E92E = {
+						DevelopmentTeam = RZGSSCAQVM;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
+					};
 					440FD61A197CAD0D0017E92E = {
 						TestTargetID = 440FD5EF197CAD0C0017E92E;
 					};
@@ -275,16 +317,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				440FD63D197CCFEF0017E92E /* STAB1.WAV in Resources */,
 				440FD616197CAD0D0017E92E /* Images.xcassets in Resources */,
-				440FD64D197CF5F30017E92E /* edown.mp3 in Resources */,
+				440FD667197E085E0017E92E /* Lose.mp3 in Resources */,
+				440FD65F197E03870017E92E /* DRIP.WAV in Resources */,
 				440FD634197CAE7D0017E92E /* ball.png in Resources */,
 				440FD60C197CAD0D0017E92E /* Main_iPad.storyboard in Resources */,
 				440FD638197CAF220017E92E /* ground.png in Resources */,
 				440FD609197CAD0D0017E92E /* Main_iPhone.storyboard in Resources */,
-				440FD64F197CFC880017E92E /* bgMusic.mp3 in Resources */,
+				440FD665197E051D0017E92E /* 606chat.wav in Resources */,
 				440FD600197CAD0D0017E92E /* InfoPlist.strings in Resources */,
+				440FD663197E04B20017E92E /* snare02.wav in Resources */,
 				440FD636197CAE820017E92E /* bug.png in Resources */,
+				440FD66F197E0F420017E92E /* rate.png in Resources */,
+				440FD669197E0A280017E92E /* CRYSTAL5.WAV in Resources */,
+				440FD66D197E0BC80017E92E /* action.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +349,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				440FD682197E15D60017E92E /* GameKitHelper.m in Sources */,
 				440FD63B197CBCCB0017E92E /* Bug.m in Sources */,
+				440FD685197E1CC40017E92E /* AchievementsHelper.m in Sources */,
 				440FD612197CAD0D0017E92E /* MyScene.m in Sources */,
 				440FD60F197CAD0D0017E92E /* ViewController.m in Sources */,
 				440FD606197CAD0D0017E92E /* AppDelegate.m in Sources */,
@@ -444,11 +492,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smashing/Smashing-Prefix.pch";
 				INFOPLIST_FILE = "Smashing/Smashing-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -458,11 +510,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Smashing/Smashing-Prefix.pch";
 				INFOPLIST_FILE = "Smashing/Smashing-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
