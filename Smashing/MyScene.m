@@ -269,7 +269,7 @@
 - (void)addGround
 {
     SKSpriteNode *ground = [SKSpriteNode spriteNodeWithImageNamed:@"ground"];
-    ground.position = CGPointMake(self.size.width/2, 15);
+    ground.position = CGPointMake(self.size.width/2, 25);
     ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ground.size];
     ground.physicsBody.dynamic = false;
     ground.physicsBody.categoryBitMask = CNPhysicsCategoryGround;
@@ -342,7 +342,6 @@
 
 - (void)reportAchievements
 {
-    NSLog(@"report achievements");
     NSMutableArray *achievements = [NSMutableArray arrayWithObjects:[AchievementsHelper reach10Achievement:score],[AchievementsHelper reach30Achievement:score],[AchievementsHelper reach50Achievement:score],[AchievementsHelper reach100Achievement:score],[AchievementsHelper reach500Achievement:score], nil];
     
     [[GameKitHelper sharedGameKitHelper] reportAchievements:achievements];
