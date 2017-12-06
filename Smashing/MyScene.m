@@ -8,18 +8,22 @@
 
 #import "MyScene.h"
 #import "Bug.h"
+#import "Ball.h"
 #import "AchievementsHelper.h"
 #import "GameKitHelper.h"
+#import <AVFoundation/AVFoundation.h>
+
 
 
 @implementation MyScene
 {
     int score;
     int ballCount;
-    int continueSmashCount;
     float speed;
     int touchCount;
     BOOL isLose;
+    int continueHitBugCount;
+
     SKLabelNode *scoreLabel;
     SKLabelNode *ballLabel;
     SKLabelNode *gameOverLabel;
@@ -27,10 +31,19 @@
     SKLabelNode *scoreBoardHighestScoreLabel;
     
     
-    SKAction *stabSound;
-    SKAction *clangSound;
-    SKAction *hitGroundSound;
+    SKAction *dropSound;
     SKAction *gameOverSound;
+    
+    SKAction *pno1Sound;
+    SKAction *pno2Sound;
+    SKAction *pno3Sound;
+    SKAction *pno4Sound;
+    SKAction *pno5Sound;
+    SKAction *pno6Sound;
+    SKAction *pno7Sound;
+    SKAction *pno8Sound;
+
+
 }
 
 -(id)initWithSize:(CGSize)size {    
@@ -62,8 +75,8 @@
     }];
     isLose = NO;
     score = 0;
+    continueHitBugCount = 0;
     ballCount = 10;
-    continueSmashCount = 0;
     speed = 0.0;
     touchCount = 0;
 }
@@ -72,19 +85,98 @@
 {
     score = 0;
     ballCount = 10;
-    continueSmashCount = 0;
     speed = 0.0;
     touchCount = 0;
     isLose = NO;
+    continueHitBugCount = 0;
+    
     self.backgroundColor = [SKColor whiteColor];
     self.physicsWorld.contactDelegate = self;
     self.physicsWorld.gravity = CGVectorMake(0, -5);
     
-    stabSound = [SKAction playSoundFileNamed:@"DRIP.WAV" waitForCompletion:NO];
-    clangSound = [SKAction playSoundFileNamed:@"snare02.wav" waitForCompletion:NO];
-    hitGroundSound = [SKAction playSoundFileNamed:@"606chat.wav" waitForCompletion:NO];
-    gameOverSound = [SKAction playSoundFileNamed:@"CRYSTAL5.WAV" waitForCompletion:NO];
+    dropSound = [SKAction playSoundFileNamed:@"drop.WAV" waitForCompletion:NO];
+    gameOverSound = [SKAction playSoundFileNamed:@"lose.WAV" waitForCompletion:NO];
     
+    
+    
+     pno1Sound = [SKAction playSoundFileNamed:@"pno_1.mp3" waitForCompletion:NO];
+     pno2Sound = [SKAction playSoundFileNamed:@"pno_2.mp3" waitForCompletion:NO];
+     pno3Sound = [SKAction playSoundFileNamed:@"pno_3.mp3" waitForCompletion:NO];
+     pno4Sound = [SKAction playSoundFileNamed:@"pno_4.mp3" waitForCompletion:NO];
+     pno5Sound = [SKAction playSoundFileNamed:@"pno_5.mp3" waitForCompletion:NO];
+     pno6Sound = [SKAction playSoundFileNamed:@"pno_6.mp3" waitForCompletion:NO];
+     pno7Sound = [SKAction playSoundFileNamed:@"pno_7.mp3" waitForCompletion:NO];
+     pno8Sound = [SKAction playSoundFileNamed:@"pno_8.mp3" waitForCompletion:NO];
+     
+
+    /*
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"pno_1" ofType:@"mp3"];
+    
+    AVAudioPlayer *pno1player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:path] error:nil];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"pno_2" ofType:@"mp3"];
+    
+    AVAudioPlayer *pno2player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:path] error:nil];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"pno_3" ofType:@"mp3"];
+    
+    AVAudioPlayer *pno3player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:path] error:nil];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"pno_4" ofType:@"mp3"];
+    
+    AVAudioPlayer *pno4player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:path] error:nil];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"pno_5" ofType:@"mp3"];
+    
+    AVAudioPlayer *pno5player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:path] error:nil];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"pno_6" ofType:@"mp3"];
+    
+    AVAudioPlayer *pno6player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:path] error:nil];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"pno_7" ofType:@"mp3"];
+    
+    AVAudioPlayer *pno7player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:path] error:nil];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"pno_8" ofType:@"mp3"];
+    
+    AVAudioPlayer *pno8player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL URLWithString:path] error:nil];
+
+    
+    
+    pno1Sound = [SKAction runBlock:^{
+        [pno1player play];
+    }];
+    
+    pno2Sound = [SKAction runBlock:^{
+        [pno2player play];
+    }];
+    
+    pno3Sound = [SKAction runBlock:^{
+        [pno3player play];
+    }];
+    
+    pno4Sound = [SKAction runBlock:^{
+        [pno4player play];
+    }];
+    
+    pno5Sound = [SKAction runBlock:^{
+        [pno5player play];
+    }];
+    
+    pno6Sound = [SKAction runBlock:^{
+        [pno6player play];
+    }];
+    
+    pno7Sound = [SKAction runBlock:^{
+        [pno7player play];
+    }];
+    
+    pno8Sound = [SKAction runBlock:^{
+        [pno8player play];
+    }];
+    
+     */
     gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"MarkerFelt-Thin"];
     gameOverLabel.text = @"Game Over";
     gameOverLabel.fontSize = 30;
@@ -126,14 +218,14 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         touchCount++;
-        if (touchCount%5 == 0) {
-            speed += 0.1;
+        if (touchCount%10 == 0) {
+            speed += 0.05;
         }
         
         if (ballCount > 0) {
             ballCount--;
             
-            SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
+            Ball *ball = [Ball spriteNodeWithImageNamed:@"ball"];
             ball.name = @"ball";
             ball.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:15];
             ball.physicsBody.restitution = 0.8;
@@ -150,18 +242,30 @@
                 if (ballCount == 0) {
                     [self lose];
                 }
+                NSLog(@"check");
+
+                /*
+                if (ball.hitBugCount == 0) {
+                    NSLog(@"reset continue");
+                    continueHitBugCount = 0;
+                }
+                 */
             }];
             SKAction *remove = [SKAction removeFromParent];
             
             if (ballCount == 0) {
                 [ball runAction:[SKAction sequence:@[wait,fade,check,remove]]];
             } else {
-                [ball runAction:[SKAction sequence:@[wait,fade,remove]]];
+                [ball runAction:[SKAction sequence:@[wait,fade,remove]] completion:^{
+                    if (ball.hitBugCount == 0) {
+                        continueHitBugCount = 0;
+                    }
+                }];
             }
             
             
             
-            [self runAction:stabSound];
+            [self runAction:dropSound];
             
             [self addChild:ball];
 
@@ -180,7 +284,6 @@
 - (void)lose
 {
     NSLog(@"You lose!");
-    
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSNumber *highestScore = [defaults objectForKey:@"HighestScore"];
@@ -202,17 +305,20 @@
          completion:^{
              gameOverLabel.hidden = NO;
              isLose = YES;
+             ballCount = 0;
              scoreBoardHighestScoreLabel.text = [NSString stringWithFormat:@"Highest Score: %d",score];
              scoreBoardScoreLabel.text = [NSString stringWithFormat:@"Score: %d",score];
              scoreBoardScoreLabel.hidden = NO;
              scoreBoardHighestScoreLabel.hidden = NO;
              [self reportScoreToGameCenter];
+
              [[NSNotificationCenter defaultCenter] postNotificationName:@"gameOverNotification" object:nil];
          }];
         [self addChild:newHighScoreLabel];
     } else {
         gameOverLabel.hidden = NO;
         isLose = YES;
+        ballCount = 0;
         [self reportScoreToGameCenter];
         scoreBoardHighestScoreLabel.text = [NSString stringWithFormat:@"Highest Score: %d",highestScore.intValue];
         scoreBoardScoreLabel.text = [NSString stringWithFormat:@"Score: %d",score];
@@ -284,26 +390,41 @@
         
         Bug *bug = [[Bug alloc] initWithImageNamed:@"bug"];
         bug.position = CGPointMake(-20,ScalarRandomRange(self.size.height/6, self.size.height/4*3) );
-        bug.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:15];
+        bug.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(bug.size.width - 5, bug.size.height - 5)];
         bug.physicsBody.dynamic = false;
         bug.physicsBody.categoryBitMask = CNPhysicsCategoryBug;
         bug.physicsBody.contactTestBitMask = CNPhysicsCategoryBall;
         bug.physicsBody.collisionBitMask = CNPhysicsCategoryBall | CNPhysicsCategoryGround;
         
+        float duration = 1.8 - score/500.0; //1.8  1.85
+        
+        //NSLog(@"duration:%f",duration);
         
         
-        SKAction *move = [SKAction moveByX:self.size.width+30 y:0 duration:ScalarRandomRange(2.5 - speed, 4.5 - speed)];
+        duration = ScalarRandomRange(duration - 0.5, duration + 0.5);
+        if (duration < 0.8) {
+            duration = 0.8;
+        }
+        
+        NSLog(@"duration:%f,score:%d",duration,score);
+
+        
+        SKAction *move = [SKAction moveByX:self.size.width+30 y:0 duration:duration];
 
         SKAction *remove = [SKAction removeFromParent];
         
-        [bug runAction:[SKAction sequence:@[move,remove]]];
+        [bug runAction:[SKAction sequence:@[move,remove]] completion:^{
+            if (!bug.isDead) {
+                [self showMinusBallLabelWithHeight:bug.position.y];
+            }
+        }];
          
         
         [self addChild:bug];
         
     }];
     
-    SKAction *wait = [SKAction waitForDuration:ScalarRandomRange(1, 2)];
+    SKAction *wait = [SKAction waitForDuration:1];
     
     [self runAction:[SKAction repeatActionForever:[SKAction sequence:@[spawnABug,wait]]]];
 }
@@ -314,34 +435,174 @@
                           contact.bodyB.categoryBitMask);
     
     if (collision == (CNPhysicsCategoryBall | CNPhysicsCategoryBug)) {
-        [self runAction:clangSound];
         Bug *bug;
+        Ball *ball;
         if (contact.bodyA.categoryBitMask == CNPhysicsCategoryBug){
             bug = (Bug *)contact.bodyA.node;
+            ball = (Ball *)contact.bodyB.node;
         } else {
             bug = (Bug *)contact.bodyB.node;
+            ball = (Ball *)contact.bodyA.node;
+
         }
         
         bug.physicsBody.dynamic = YES;
         if (!bug.isDead) {
             score++;
-            [self reportAchievements];
-            continueSmashCount++;
-            ballCount += (int)continueSmashCount/2 ;
+            if (score%10 == 0) {
+                [self reportAchievements];
+            }
             bug.isDead = YES;
+            
+            ball.hitBugCount++;
+            
+            continueHitBugCount++;
+            
+            [self showAddBallLabelAndSoundWithBall:ball];
             
         }
     } else if (collision == (CNPhysicsCategoryBall | CNPhysicsCategoryGround))
     {
-        [self runAction:hitGroundSound];
-        continueSmashCount = 0;
+        /*
+        int dice = arc4random()%8;
+        
+        switch (dice) {
+            case 0:
+                [self runAction:pno1Sound];
+                break;
+            case 1:
+                [self runAction:pno2Sound];
+                break;
+            case 2:
+                [self runAction:pno3Sound];
+                break;
+            case 3:
+                [self runAction:pno4Sound];
+                break;
+            case 4:
+                [self runAction:pno5Sound];
+                break;
+            case 5:
+                [self runAction:pno6Sound];
+                break;
+            case 6:
+                [self runAction:pno7Sound];
+                break;
+            case 7:
+                [self runAction:pno8Sound];
+                break;
+                
+            default:
+                break;
+        }
+         */
     }
+}
+
+- (void)showAddBallLabelAndSoundWithBall:(Ball *)ball
+{
+    // add ball count
+    int addBall = continueHitBugCount > 8 ? 8:continueHitBugCount;
+    ballCount += addBall;
+    
+    // show label
+    
+    SKLabelNode *addBallLabel = [SKLabelNode labelNodeWithFontNamed:@"Marker Felt"];
+    addBallLabel.text = [NSString stringWithFormat:@"+%d",addBall];
+    
+    UIColor *color;
+    switch (continueHitBugCount) {
+        case 1:
+            color = [SKColor blackColor];
+            [self runAction:pno1Sound];
+            break;
+        case 2:
+            color = [SKColor brownColor];
+            [self runAction:pno2Sound];
+
+            break;
+        case 3:
+            color = [SKColor blueColor];
+            [self runAction:pno3Sound];
+
+            break;
+        case 4:
+            color = [SKColor greenColor];
+            [self runAction:pno4Sound];
+
+            break;
+        case 5:
+            color = [SKColor purpleColor];
+            [self runAction:pno5Sound];
+
+            break;
+        case 6:
+            color = [SKColor yellowColor];
+            [self runAction:pno6Sound];
+
+            break;
+        case 7:
+            color = [SKColor orangeColor];
+            [self runAction:pno7Sound];
+            
+            break;
+            
+        default:
+            color = [SKColor redColor];
+            [self runAction:pno8Sound];
+
+            break;
+    }
+    
+    addBallLabel.fontColor = color;
+    
+    addBallLabel.fontSize = 20;
+    addBallLabel.zPosition = 2;
+    
+    addBallLabel.position = CGPointMake(ball.position.x, ball.position.y + 10);
+    
+    SKAction *scale = [SKAction scaleTo:1.5 duration:0.3];
+    SKAction *fade = [SKAction fadeOutWithDuration:0.3];
+    SKAction *remove = [SKAction removeFromParent];
+    
+    [addBallLabel runAction:[SKAction sequence:@[scale,fade,remove]]];
+    
+    [self addChild:addBallLabel];
+    
+}
+
+- (void)showMinusBallLabelWithHeight:(float)height
+{
+    if (ballCount == 0) {
+        [self lose];
+        return;
+    }
+    ballCount--;
+    continueHitBugCount = 0;
+    
+    SKLabelNode *minusBallLabel = [SKLabelNode labelNodeWithFontNamed:@"Marker Felt"];
+    minusBallLabel.text = @"-1";
+    
+    minusBallLabel.fontColor = [SKColor redColor];
+    minusBallLabel.fontSize = 20;
+    minusBallLabel.zPosition = 2;
+    
+    minusBallLabel.position = CGPointMake(self.size.width - 20, height);
+    
+    SKAction *scale = [SKAction scaleTo:1.5 duration:0.3];
+    SKAction *fade = [SKAction fadeOutWithDuration:0.3];
+    SKAction *remove = [SKAction removeFromParent];
+    
+    [minusBallLabel runAction:[SKAction sequence:@[scale,fade,remove]]];
+    
+    [self addChild:minusBallLabel];
 }
 
 #pragma mark - Game kit
 
 - (void)reportAchievements
 {
+    NSLog(@"report achievements");
     NSMutableArray *achievements = [NSMutableArray arrayWithObjects:[AchievementsHelper reach10Achievement:score],[AchievementsHelper reach30Achievement:score],[AchievementsHelper reach50Achievement:score],[AchievementsHelper reach100Achievement:score],[AchievementsHelper reach500Achievement:score], nil];
     
     [[GameKitHelper sharedGameKitHelper] reportAchievements:achievements];
@@ -349,6 +610,7 @@
 
 - (void)reportScoreToGameCenter
 {
+    NSLog(@"report score");
     [[GameKitHelper sharedGameKitHelper] reportScore:score forLeaderboardID:@"HighestScore"];
     
 }

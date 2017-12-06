@@ -43,7 +43,7 @@
     
     SKScene * scene = [MyScene sceneWithSize:gameView.frame.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    
+
     // Present the scene.
     [gameView presentScene:scene];
     
@@ -265,7 +265,7 @@
 {
     //self.canDisplayBannerAds = NO;
     NSLog(@"rate");
-    NSString *str = @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=901397384";
+    NSString *str = @"itms-apps://itunes.apple.com/app/id901397384";
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 

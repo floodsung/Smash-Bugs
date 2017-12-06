@@ -12,8 +12,8 @@
 static inline CGFloat ScalarRandomRange(CGFloat min,
                                         CGFloat max)
 {
-    return floorf(((double)arc4random() / ARC4RANDOM_MAX) *
-                  (max - min) + min);
+    return ((double)arc4random() / ARC4RANDOM_MAX) *
+                  (max - min) + min;
 }
 
 typedef NS_OPTIONS(uint32_t, CNPhysicsCategory)
